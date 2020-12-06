@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const TABLE_SELECTOR = 'table#filter--result-table-resumo';
-const STORE_FILEPATH = path.resolve(__dirname, process.env.STORE_FILENAME);
+const STORE_FILEPATH = path.resolve(__dirname, '../', process.env.STORE_FILENAME);
 
 class FiiCrawler {
   constructor(url, tableSelector) {
