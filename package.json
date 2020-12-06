@@ -1,0 +1,42 @@
+{
+  "name": "fii-api",
+  "version": "1.0.0",
+  "description": "fii-api",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Annatsu/fii-api.git"
+  },
+  "keywords": [
+    "fii",
+    "api",
+    "crawler",
+    "cached"
+  ],
+  "author": {
+    "name": "Brendon Pagano",
+    "email": "brendonpagano@gmail.com",
+    "url": "https://brendonpagano.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Annatsu/fii-api/issues"
+  },
+  "homepage": "https://github.com/Annatsu/fii-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.6",
+    "pm2": "^4.5.0",
+    "prettier": "^2.2.1",
+    "sequelize-cli": "^6.2.0"
+  }
+}
