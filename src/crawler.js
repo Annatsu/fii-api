@@ -23,15 +23,17 @@ class FiiCrawler {
     await page.waitForSelector(this.tableSelector);
     this.data = await page.evaluate((tId) => {
       const table = document.querySelector(tId);
+      const priceToFloat = (priceStr) => parseFloat(priceStr.replace(/\./g, '').replace(/,/g, '.'));
+
       return Array.from(table.querySelectorAll('tbody > tr')).map((tr) => {
         const cols = Array.from(tr.children).map((c) => c.textContent);
         const [pDay, pMonth, pYear] = cols[3].split('/');
         return {
           ticker: cols[0],
-          lastYield: parseFloat(cols[1].replace(/,/g, '.')),
-          lastYieldPercentage: parseFloat(cols[2].replace(/,/g, '.')),
+          lastYield: priceToFloat(cols[1]),
+          lastYieldPercentage: priceToFloat(cols[2]),
           paymentDate: `20${pYear}-${pMonth}-${pDay}`,
-          sharePrice: parseFloat(cols[7].replace(/,/g, '.')),
+          sharePrice: priceToFloat(cols[7]),
         };
       });
     }, this.tableSelector);
@@ -51,7 +53,11 @@ class FiiCrawler {
   }
 
   loadJSON() {
-    return JSON.parse(fs.readFileSync(STORE_FILEPATH, 'utf-8'));
+    try {
+      return JSON.parse(fs.readFileSync(STORE_FILEPATH, 'utf-8'));
+    } catch (err) {
+      return null;
+    }
   }
 }
 
